@@ -2,61 +2,81 @@
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
-const albums = await getCollection('albums')
-export const prerender = true
+const albums = await getCollection('albums');
+export const prerender = true;
 ---
 
-<Layout title="kvibeshopcl | Stock K-Pop ✨">
-  <main class="flex flex-col items-center w-full min-h-screen py-10 px-4 bg-white">
-    
-    <img 
-      src="/logopng-pequeño.png" 
-      alt="Logo kvibeshopcl" 
-      class="logo-small mb-4"
-    />
+<Layout title="kvibeshopcl | Catálogo ✨">
+  <main class="flex flex-col items-center w-full min-h-screen pt-2 pb-10 px-4 bg-white">
 
-    <header class="text-center mb-12">
-      <nav class="text-[10px] uppercase tracking-[0.3em] text-gray-400 mb-6">
-          Inicio / K-Pop 
-        </nav>
-    </header>
+    <div class="w-full max-w-md mb-12">
+      <input 
+        type="text" 
+        id="search-input"
+        placeholder="Buscar por grupo o álbum..." 
+        class="w-full p-4 border-2 border-purple-100 rounded-full focus:border-purple-500 outline-none transition-all shadow-sm text-sm"
+      />
+    </div>
 
-    <section aria-label="Catálogo K-Pop" class="w-full max-w-7xl mx-auto">
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-4 gap-y-10 md:gap-8">
+    <section class="w-full max-w-6xl mx-auto">
+      <div id="album-grid" class="grid grid-cols-2 md:grid-cols-4 gap-8">
         {
           albums.map((album) => {
-            const { id, data } = album
-            const { title, img, price } = data
+            const { id, data } = album;
+            const { title, img, price } = data;
 
             return (
-              <article class="flex flex-col items-center text-center group w-full max-w-[220px] mx-auto">
-                <a href={`/album/${id}`} class="shrink-0 transition hover:scale-105 outline-none border-0 block w-full">
-                  <div class="overflow-hidden rounded-xl shadow-md border border-transparent bg-gray-50 aspect-square">
-                    <img
-                      transition:name={`img-${id}`}
-                      class="w-full h-full object-cover"
-                      src={`/${img}`}
-                      alt={title}
-                    />
-                  </div>
+              /* IMPORTANTE: El data-title permite que el script encuentre el producto */
+              <article class="album-card flex flex-col items-center" data-title={title.toLowerCase()}>
+                <a href={`/album/${id}`} class="w-full aspect-square overflow-hidden rounded-xl shadow-lg mb-4">
+                  <img src={`/${img}`} alt={title} class="w-full h-full object-cover" />
                 </a>
-
-                <div class="mt-4 flex flex-col items-center px-1">
-                  <h2 transition:name={`title-${id}`} class="mb-1 text-[11px] md:text-sm font-bold leading-tight text-purple-950 uppercase line-clamp-2 min-h-[2.5rem]">
-                    {title}
-                  </h2>
-                  <p class="text-sm md:text-lg font-black text-purple-700">
-                    {price}
-                  </p>
-                </div>
+                <h2 class="text-xs font-bold uppercase text-purple-900 line-clamp-1">{title}</h2>
+                <p class="text-purple-700 font-black">{price}</p>
               </article>
             )
           })
         }
       </div>
+
+      <div id="no-results" class="hidden text-center py-20 text-gray-400 italic">
+        No hay resultados para tu búsqueda 🥲
+      </div>
     </section>
   </main>
 </Layout>
+
+<script>
+  // Esta función se ejecuta CADA VEZ que la página carga, solucionando el error
+  document.addEventListener('astro:page-load', () => {
+    const searchInput = document.querySelector('#search-input') as HTMLInputElement;
+    const cards = document.querySelectorAll('.album-card');
+    const noResults = document.querySelector('#no-results');
+
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        const query = searchInput.value.toLowerCase();
+        let found = false;
+
+        cards.forEach(card => {
+          const title = card.getAttribute('data-title') || '';
+          if (title.includes(query)) {
+            (card as HTMLElement).style.display = 'flex';
+            found = true;
+          } else {
+            (card as HTMLElement).style.display = 'none';
+          }
+        });
+
+        if (found) {
+          noResults?.classList.add('hidden');
+        } else {
+          noResults?.classList.remove('hidden');
+        }
+      });
+    }
+  });
+</script>
 
 <style>
 .logo-small {

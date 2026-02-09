@@ -1,6 +1,8 @@
 ---
 import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
+
+const { title, albumTitle } = Astro.props;
 ---
 
 <!doctype html>
@@ -9,22 +11,44 @@ import '../styles/global.css';
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="generator" content={Astro.generator} />
-        <title>kvibeshopcl | K-Pop & Skincare</title>
+        <title>{title}</title>
+       
 		<ClientRouter />
     </head>
     <body class="bg-white min-h-screen">
+
+        <header class="flex flex-col items-center pt-4 mb-2">
+            <img 
+				src="/logopng-pequeño.png" 
+				alt="Logo kvibeshopcl" 
+				class="logo-small mb-2" 
+			/>
+			<nav class="text-[10px] uppercase tracking-[0.3em] text-gray-400">
+				<a href="/" class="hover:text-purple-600 transition-colors">K-Pop</a>
+				
+				
+				{albumTitle && (
+					<span class="text-purple-900 font-bold"> / {albumTitle}</span>
+				)}
+			</nav>
+
+		</header>
         <slot />
     </body>
 </html>
 
 <style is:global>
-    :root {
-        --brand-purple: #2D0046; /* Púrpura oscuro elegante */
-    }
-    html {
-        font-family: 'Poppins', system-ui, sans-serif;
-        background-color: #FFFFFF;
-        color: var(--brand-purple);
-    }
+	:root { --brand-purple: #2D0046; }
+	html { font-family: 'Poppins', sans-serif; color: var(--brand-purple); }
+
+	.logo-small {
+		height: 72px; /* Sincronizado con el tamaño 7xl */
+		width: auto;
+		user-select: none;
+		pointer-events: none;
+	}
+
+	@media (max-width: 768px) {
+		.logo-small { height: 48px; }
+	}
 </style>
