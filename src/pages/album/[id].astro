@@ -1,0 +1,86 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const albums = await getCollection("albums");
+  return albums.map((album) => ({
+    params: { id: album.id }, 
+    props: { album },
+  }));
+}
+
+const { album } = Astro.props;
+const { data, id } = album;
+const { title, img, price } = data;
+
+const { Content } = await render(album);
+---
+
+<Layout title={`${title} | kvibeshopcl`}>
+
+  <main class="min-h-screen bg-white flex items-center justify-center py-12 px-6">
+    
+    
+    <section class="w-full max-w-6xl flex flex-col md:flex-row items-center md:items-start justify-center gap-12 md:gap-24">
+      
+      <a href='/' class="hover:underline opacity-70"> ← </a>
+      <div class="w-full max-w-[350px] md:max-w-[480px] shrink-0 shadow-2xl rounded-3xl overflow-hidden border border-gray-100 bg-gray-50">
+       
+        <img 
+          transition:name={`img-${id}`}
+          class="w-full h-auto object-contain" 
+          src={`/${img}`} 
+          alt={title} 
+        />
+      </div>
+
+     
+      <div class="flex-1 flex flex-col text-center md:text-left max-w-xl">
+       
+
+        <h1 transition:name={`title-${id}`} class="text-3xl md:text-5xl font-black text- leading-tight mb-4 uppercase tracking-tighter">
+          {title}
+        </h1>
+
+        <h1 class="text-4xl text-purple-700 font-light mb-10">
+          {price}
+        </h1>
+
+        <div class="flex flex-col gap-4 mb-14 items-center md:items-start">
+          <a 
+            href="https://www.instagram.com/kvibeshopcl/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full md:w-fit px-14 py-5 bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white font-bold rounded-full hover:scale-105 transition-transform text-center no-underline shadow-xl"
+          >
+            CONSULTAR POR INSTAGRAM
+          </a>
+          <p class="text-[10px] text-gray-400 italic">
+            * Realizamos envíos a todo Chile por Starken.
+          </p>
+        </div>
+
+        {/* Descripción del Producto (Markdown) */}
+        <div class="prose prose-purple max-w-none border-t border-gray-100 pt-10 text-gray-600 text-sm md:text-base leading-relaxed">
+          <h3 class="text-xs font-bold uppercase mb-6 text- tracking-widest">Detalles del Producto</h3>
+          <Content />
+        </div>
+      </div>
+
+    </section>
+  </main>
+</Layout>
+
+<style is:global>
+/* Estilos para que las listas del Markdown se vean con viñetas */
+.prose ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+.prose p {
+    margin-bottom: 1rem;
+  }
+</style>

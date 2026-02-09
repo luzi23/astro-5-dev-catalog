@@ -1,0 +1,12 @@
+---
+title: 'BTS - Skool Luv Affair'
+img: bts_skool_luv_affair.png
+price: '$25.000'
+---
+
+-Photo book
+-CD-R
+-Photo card (Random 1 out of 16)
+-Unit photo card (Random 1 out of 4)
+-Panorama mini poster (Random 1 out of 3)
+-Sticker
