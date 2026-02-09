@@ -3,62 +3,49 @@ import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
 const albums = await getCollection('albums')
-
 export const prerender = true
 ---
 
 <Layout title="kvibeshopcl | Stock K-Pop ✨">
   <main class="flex flex-col items-center w-full min-h-screen py-10 px-4 bg-white">
     
-   
     <img 
       src="/logopng-pequeño.png" 
       alt="Logo kvibeshopcl" 
-      class="logo-brand mb-6" 
+      class="logo-small mb-4"
     />
 
-    <header class="text-center">
-		
-		<nav class="text-[10px] uppercase tracking-[0.3em] text-gray-400 mb-6">
+    <header class="text-center mb-12">
+      <nav class="text-[10px] uppercase tracking-[0.3em] text-gray-400 mb-6">
           Inicio / K-Pop 
         </nav>
-       
-      
     </header>
 
-  <section
-    aria-label="Albums de K-pop con entrega inmediata"
-    class="w-full"
-  >
-    <div class="px-6 mx-auto max-w-5xl">
-      <div class="grid gap-12 grid-cols-3 place-items-center">
+    <section aria-label="Catálogo K-Pop" class="w-full max-w-7xl mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-4 gap-y-10 md:gap-8">
         {
           albums.map((album) => {
             const { id, data } = album
             const { title, img, price } = data
 
             return (
-              <article class="flex flex-col items-center text-center group">
-                <a
-                  href={`/album/${id}`}
-                  class="shrink-0 transition hover:scale-105 outline-none border-0"
-                >
-                  <img
-                    transition:name={`img-${id}`}
-                    class="mb-4 w-32 h-32 md:w-44 md:h-44 object-cover rounded shadow-md border-0"
-                    src={`/${img}`}
-                    alt={title}
-                  />
+              <article class="flex flex-col items-center text-center group w-full max-w-[220px] mx-auto">
+                <a href={`/album/${id}`} class="shrink-0 transition hover:scale-105 outline-none border-0 block w-full">
+                  <div class="overflow-hidden rounded-xl shadow-md border border-transparent bg-gray-50 aspect-square">
+                    <img
+                      transition:name={`img-${id}`}
+                      class="w-full h-full object-cover"
+                      src={`/${img}`}
+                      alt={title}
+                    />
+                  </div>
                 </a>
 
-                <div>
-                  <h2
-                    transition:name={`title-${id}`}
-                    class="mb-2 text-xl font-bold leading-tight text-purple-900 uppercase"
-                  >
+                <div class="mt-4 flex flex-col items-center px-1">
+                  <h2 transition:name={`title-${id}`} class="mb-1 text-[11px] md:text-sm font-bold leading-tight text-purple-950 uppercase line-clamp-2 min-h-[2.5rem]">
                     {title}
                   </h2>
-                  <p class="text-2xl font-black text-purple-700 mb-3">
+                  <p class="text-sm md:text-lg font-black text-purple-700">
                     {price}
                   </p>
                 </div>
@@ -67,19 +54,25 @@ export const prerender = true
           })
         }
       </div>
-    </div>
-  </section>
-</main>
-
+    </section>
+  </main>
 </Layout>
+
 <style>
- .logo-brand {
-    height: 85px;
-    width: auto;
+.logo-small {
+    height: 72px; 
+    width: auto;  
+    object-fit: contain;
     border: 0;
     outline: none;
     user-select: none;
     pointer-events: none;
     transition: none!important; 
+  }
+
+  @media (max-width: 768px) {
+  .logo-small {
+      height: 48px; 
+    }
   }
 </style>
