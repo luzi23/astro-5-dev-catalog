@@ -18,7 +18,12 @@ export const prerender = true;
         class="w-full p-4 border-2 border-purple-100 rounded-full focus:border-purple-500 outline-none transition-all shadow-sm text-sm"
       />
     </div>
-
+    
+      <h1 class="text-xl md:text-xl font-black uppercase tracking-tighter text-purple-900 mb-4">
+       . ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁. Catálogo de Álbumes . ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁.
+      </h1>
+      
+    
     <section class="w-full max-w-6xl mx-auto">
       <div id="album-grid" class="grid grid-cols-2 md:grid-cols-4 gap-8">
         {
@@ -41,6 +46,35 @@ export const prerender = true;
 
       <div id="no-results" class="hidden text-center py-20 text-gray-400 italic">
         No hay resultados para tu búsqueda 🥲
+      </div>
+    </section>
+<section class="w-full max-w-6xl mx-auto px-6 py-20 mt-10 border-t border-gray-50">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <article class="flex flex-col items-center text-center p-10 bg-white rounded-[2.5rem] border border-purple-300 shadow-sm transition-all hover:shadow-xl hover:shadow-purple-500/5 group">
+          <div class="w-14 h-14 bg-pink-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <span class="text-3xl">📱</span>
+          </div>
+          <h3 class="text-purple-900 font-black uppercase tracking-tighter mb-3">Catálogo Digital 24/7</h3>
+          <p class="text-gray-400 text-sm leading-relaxed text-balance">Explora y elige tus favoritos en cualquier momento; el proceso finaliza en nuestro Instagram</p>
+        </article>
+
+        <article class="flex flex-col items-center text-center p-10 bg-white rounded-[2.5rem] border border-purple-300 shadow-sm transition-all hover:shadow-xl hover:shadow-purple-500/5 group">
+          <div class="w-14 h-14 bg-pink-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <span class="text-3xl">✨</span>
+          </div>
+          <h3 class="text-purple-900 font-black uppercase tracking-tighter mb-3">Atención por Instagram</h3>
+          <p class="text-gray-400 text-sm leading-relaxed text-balance">Contacto directo y personalizado por DM para resolver tus dudas antes de transferir</p>
+        </article>
+
+        <article class="flex flex-col items-center text-center p-10 bg-white rounded-[2.5rem] border border-purple-300 shadow-sm transition-all hover:shadow-xl hover:shadow-purple-500/5 group">
+          <div class="w-14 h-14 bg-pink-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <span class="text-3xl">🇰🇷</span>
+          </div>
+          <h3 class="text-purple-900 font-black uppercase tracking-tighter mb-3 text-balance leading-none">Productos 100% Originales</h3>
+          <p class="text-gray-400 text-sm leading-relaxed text-balance">Mercancía oficial importada directamente desde Corea para garantizar tu colección</p>
+        </article>
+
       </div>
     </section>
   </main>
