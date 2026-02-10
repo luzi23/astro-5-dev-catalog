@@ -7,48 +7,43 @@ const { title, albumTitle } = Astro.props;
 
 <!doctype html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <title>{title}</title>
-       
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{title} | kvibeshopcl</title>
 		<ClientRouter />
-    </head>
-    <body class="bg-white min-h-screen">
+	</head>
+	<body class="bg-white min-h-screen antialiased">
+		
+	
+		<header class="flex flex-col items-center pt-6 pb-2">
+			<a href="/" class="transition hover:opacity-80">
+				<img src="/logopng-pequeño.png" alt="Logo" class="logo-small mb-3" />
+			</a>
 
-        <header class="flex flex-col items-center pt-4 mb-2">
-            <img 
-				src="/logopng-pequeño.png" 
-				alt="Logo kvibeshopcl" 
-				class="logo-small mb-2" 
-			/>
-			<nav class="text-[10px] uppercase tracking-[0.3em] text-gray-400">
-				<a href="/" class="hover:text-purple-600 transition-colors">K-Pop</a>
+			<nav class="text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-gray-400 flex flex-wrap justify-center gap-1 px-4">
+				<a href="/" class="hover:text-purple-600 transition-colors">Inicio</a>
+				<span>/</span>
+				<a href="/info" class="hover:text-purple-600 transition-colors">Información</a>
 				
-				
-				{albumTitle && (
-					<span class="text-purple-900 font-bold"> / {albumTitle}</span>
-				)}
 			</nav>
-
 		</header>
-        <slot />
-    </body>
+
+		<slot />
+	</body>
 </html>
 
 <style is:global>
 	:root { --brand-purple: #2D0046; }
 	html { font-family: 'Poppins', sans-serif; color: var(--brand-purple); }
-
+	
 	.logo-small {
-		height: 72px; /* Sincronizado con el tamaño 7xl */
+		height: 60px; 
 		width: auto;
-		user-select: none;
-		pointer-events: none;
 	}
 
 	@media (max-width: 768px) {
-		.logo-small { height: 48px; }
+		.logo-small { height: 40px; }
 	}
 </style>

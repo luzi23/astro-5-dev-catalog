@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import Carousel from '../components/Carousel.astro';
 
 const albums = await getCollection('albums');
 export const prerender = true;
@@ -8,7 +9,7 @@ export const prerender = true;
 
 <Layout title="kvibeshopcl | Catálogo ✨">
   <main class="flex flex-col items-center w-full min-h-screen pt-2 pb-10 px-4 bg-white">
-
+    <Carousel />
     <div class="w-full max-w-md mb-12">
       <input 
         type="text" 
@@ -26,7 +27,6 @@ export const prerender = true;
             const { title, img, price } = data;
 
             return (
-              /* IMPORTANTE: El data-title permite que el script encuentre el producto */
               <article class="album-card flex flex-col items-center" data-title={title.toLowerCase()}>
                 <a href={`/album/${id}`} class="w-full aspect-square overflow-hidden rounded-xl shadow-lg mb-4">
                   <img src={`/${img}`} alt={title} class="w-full h-full object-cover" />
@@ -47,7 +47,6 @@ export const prerender = true;
 </Layout>
 
 <script>
-  // Esta función se ejecuta CADA VEZ que la página carga, solucionando el error
   document.addEventListener('astro:page-load', () => {
     const searchInput = document.querySelector('#search-input') as HTMLInputElement;
     const cards = document.querySelectorAll('.album-card');

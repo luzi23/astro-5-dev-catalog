@@ -1,0 +1,84 @@
+---
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
+---
+
+<div class="w-full max-w-6xl mx-auto px-4 mb-10 overflow-hidden">
+  <div class="swiper main-carousel rounded-[2rem] shadow-2xl shadow-black/5 border border-transparent">
+    <div class="swiper-wrapper">
+      
+
+      <div class="swiper-slide">
+        <div class="banner-wrapper">
+          <img 
+            src="/welcome.png" 
+            alt="Bienvenida" 
+            class="banner-img"
+          />
+        </div>
+      </div>
+
+
+      <div class="swiper-slide">
+        <div class="banner-wrapper">
+          <img 
+            src="/slide.png" 
+            alt="Información" 
+            class="banner-img"
+          />
+        </div>
+      </div>
+
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+
+<style is:global>
+  :root {
+    --swiper-theme-color: #2D0046; 
+    --swiper-pagination-bullet-inactive-color: #ffffff;
+    --swiper-pagination-bullet-inactive-opacity: 0.6;
+    --swiper-pagination-bullet-size: 6px;
+  }
+  
+ .banner-wrapper {
+    width: 100%;
+    aspect-ratio: 3 / 2; 
+    background-color: #fff;
+  }
+
+  @media (min-width: 768px) {
+   .banner-wrapper {
+      aspect-ratio: 12 / 5; 
+    }
+  }
+
+ .banner-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+ .swiper-pagination {
+    bottom: 20px!important;
+  }
+</style>
+
+<script>
+  import Swiper from 'swiper';
+  import { Pagination, Autoplay, EffectFade } from 'swiper/modules';
+
+  document.addEventListener('astro:page-load', () => {
+    new Swiper('.main-carousel', {
+      modules: [Pagination, Autoplay, EffectFade],
+      effect: 'fade',
+      fadeEffect: { crossFade: true },
+      loop: true,
+      speed: 1000,
+      autoplay: { delay: 5000, disableOnInteraction: false },
+      pagination: { el: '.swiper-pagination', clickable: true },
+    });
+  });
+</script>
