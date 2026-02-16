@@ -1,4 +1,9 @@
-<div id="pet-container" class="fixed z-50 pointer-events-none" style="bottom: 0px; left: -100px;">
+<div 
+  id="pet-container" 
+  class="fixed z-50 pointer-events-none" 
+  style="bottom: 0px; left: -100px;"
+  transition:persist
+>
   <img 
     id="pet-img"
     src="/cat-cute.gif" 
@@ -8,35 +13,49 @@
 </div>
 
 <script>
-  const container = document.getElementById('pet-container');
-  const img = document.getElementById('pet-img');
+    declare global {
+    interface Window {
+      petAnimationId: number;
+    }
+  }
+  function initPet() {
+    const container = document.getElementById('pet-container');
+    const img = document.getElementById('pet-img');
+    
   
-  let position = -100; 
-  let direction = 1;   
-  const speed = 1.5;   
-  const screenWidth = window.innerWidth;
-
-  function walk() {
+    if (window.petAnimationId) cancelAnimationFrame(window.petAnimationId);
+    
     if (!container || !img) return;
 
-    position += speed * direction;
-    container.style.left = `${position}px`;
+    let position = -100;
+    let direction = 1;
+    const speed = 1.5;
 
-    // Lógica de rebote y volteo
-    if (position > window.innerWidth + 50) { 
-      direction = -1; 
-      img.style.transform = 'scaleX(-1)'; 
-    } else if (position < -100) { 
-      direction = 1; 
-      img.style.transform = 'scaleX(1)'; 
+    function walk() {
+      if (!container || !img) return;
+
+      position += speed * direction;
+      container.style.left = `${position}px`;
+
+      if (position > window.innerWidth + 50) { 
+        direction = -1; 
+        img.style.transform = 'scaleX(-1)'; 
+      } else if (position < -100) { 
+        direction = 1; 
+        img.style.transform = 'scaleX(1)'; 
+      }
+
+      // Guardamos el ID para poder cancelarlo si hace falta
+      window.petAnimationId = requestAnimationFrame(walk);
     }
 
-    requestAnimationFrame(walk);
+    walk();
   }
 
-  walk();
+  document.addEventListener('astro:page-load', initPet);
   
-  window.addEventListener('resize', () => {
+  document.addEventListener('astro:before-swap', () => {
+    if (window.petAnimationId) cancelAnimationFrame(window.petAnimationId);
   });
 </script>
 

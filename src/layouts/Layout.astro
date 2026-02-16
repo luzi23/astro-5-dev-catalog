@@ -2,6 +2,7 @@
 import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 import Pet from '../components/Pet.astro';
+import { ViewTransitions } from 'astro:transitions';
 
 const { title, albumTitle } = Astro.props;
 ---
@@ -32,7 +33,9 @@ const { title, albumTitle } = Astro.props;
 		</header>
 
 		<slot />
-		<Pet />
+		<div transition:persist>
+        <Pet />
+    </div>
 	</body>
 </html>
 
