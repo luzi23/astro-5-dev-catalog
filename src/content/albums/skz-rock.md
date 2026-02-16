@@ -1,7 +1,7 @@
 ---
 title: 'Stray Kids - Rock Star'
-img: skz_rock_rosado.png
-price: '$25.000'
+img: rockstar.JPG
+price: '$23.000'
 ---
 
 - Photo book

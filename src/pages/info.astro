@@ -1,5 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ShoppingBag from 'astro-heroicons/outline/ShoppingBag.astro';
+import Clipboard from 'astro-heroicons/outline/Clipboard.astro';
+import Truck from 'astro-heroicons/outline/Truck.astro';
+import Home from 'astro-heroicons/outline/Home.astro';
+import Clock from 'astro-heroicons/outline/Clock.astro';
+
+
+
+
+
 ---
 
 <Layout title="Informaciones de Compra" albumTitle="">
@@ -16,7 +26,7 @@ import Layout from '../layouts/Layout.astro';
     
       <section class="bg-purple-50/30 p-8 rounded-3xl border border-purple-100">
         <h2 class="text-lg font-bold text-purple-900 uppercase mb-4 tracking-widest flex items-center gap-2">
-          <span>🛍️</span> Cómo Comprar
+          <ShoppingBag class="w-6 h-6 text-purple-900" /> Cómo Comprar
         </h2>
         <div class="space-y-4 text-gray-700">
           <p>Nuestra web funciona como un <strong>catálogo digital</strong> para que revises el stock disponible. El proceso de compra es el siguiente:</p>
@@ -34,7 +44,7 @@ import Layout from '../layouts/Layout.astro';
        
         <section>
           <h2 class="text-lg font-bold text-purple-900 uppercase mb-4 tracking-widest flex items-center gap-2">
-            <span>✈️</span> Envío Internacional
+            <Truck class="w-6 h-6 text-purple-900" /> Envío Internacional
           </h2>
           <ul class="space-y-3 text-gray-600">
             <li>• <strong>K-pop & Merch:</strong> Viajan mediante UPS.</li>
@@ -45,7 +55,7 @@ import Layout from '../layouts/Layout.astro';
 
         <section>
           <h2 class="text-lg font-bold text-purple-900 uppercase mb-4 tracking-widest flex items-center gap-2">
-            <span>📦</span> Entregas en Chile
+            <Home class="w-6 h-6 text-purple-900" /> Entregas en Chile
           </h2>
           <ul class="space-y-3 text-gray-600">
             <li>• <strong>Envíos:</strong> A todo Chile por <strong>Starken</strong> (por pagar).</li>
@@ -58,7 +68,7 @@ import Layout from '../layouts/Layout.astro';
       
       <section class="border-t border-gray-100 pt-10">
         <h2 class="text-lg font-bold text-purple-900 uppercase mb-4 tracking-widest flex items-center gap-2">
-          <span>⏳</span> Tiempos de Espera
+          <Clock class="w-6 h-6 text-purple-900" /> Tiempos de Espera
         </h2>
         <div class="grid md:grid-cols-2 gap-6 text-gray-600">
           <p>• <strong>K-Pop:</strong> 7 a 10 días hábiles desde que se completa la caja del mes y se envía a Chile.</p>
@@ -69,7 +79,7 @@ import Layout from '../layouts/Layout.astro';
       
       <section class="bg-gray-50 p-8 rounded-3xl border border-gray-200">
         <h2 class="text-lg font-bold text-gray-900 uppercase mb-6 tracking-widest flex items-center gap-2">
-          <span>📜</span> Políticas de la Tienda
+          <Clipboard class="w-6 h-6 text-purple-900" /> Políticas de la Tienda
         </h2>
         <div class="grid md:grid-cols-2 gap-8 text-xs md:text-sm text-gray-600">
           <div class="space-y-4">

@@ -1,7 +1,7 @@
 ---
-title: 'Stray Kids - KARMA'
-img: skz_karma.png
-price: '$30.000'
+title: "Stray Kids - KARMA"
+img: "skzkarma.JPG"
+price: "$27.000"
 ---
 
 - Photo book

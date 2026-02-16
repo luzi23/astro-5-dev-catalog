@@ -2,7 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import Carousel from '../components/Carousel.astro';
-
+import DevicePhoneMobile from 'astro-heroicons/outline/DevicePhoneMobile.astro';
+import MapPin from 'astro-heroicons/outline/MapPin.astro';
+import Sparkles from 'astro-heroicons/outline/Sparkles.astro';
 const albums = await getCollection('albums');
 export const prerender = true;
 ---
@@ -19,9 +21,10 @@ export const prerender = true;
       />
     </div>
     
-      <h1 class="text-xl md:text-xl font-black uppercase tracking-tighter text-purple-900 mb-4">
-       . ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁. Catálogo de Álbumes . ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁.
-      </h1>
+        <h2 class="text-xl md:text-xl font-black uppercase tracking-tighter text-purple-900 mb-4">
+          . ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁. Catálogo . ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁.
+        </h2>
+        
       
     
     <section class="w-full max-w-6xl mx-auto">
@@ -53,7 +56,7 @@ export const prerender = true;
         
         <article class="flex flex-col items-center text-center p-10 bg-white rounded-[2.5rem] border border-purple-300 shadow-sm transition-all hover:shadow-xl hover:shadow-purple-500/5 group">
           <div class="w-14 h-14 bg-pink-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <span class="text-3xl">📱</span>
+            <DevicePhoneMobile class="w-6 h-6 text-purple-900" />
           </div>
           <h3 class="text-purple-900 font-black uppercase tracking-tighter mb-3">Catálogo Digital 24/7</h3>
           <p class="text-gray-400 text-sm leading-relaxed text-balance">Explora y elige tus favoritos en cualquier momento; el proceso finaliza en nuestro Instagram</p>
@@ -61,7 +64,7 @@ export const prerender = true;
 
         <article class="flex flex-col items-center text-center p-10 bg-white rounded-[2.5rem] border border-purple-300 shadow-sm transition-all hover:shadow-xl hover:shadow-purple-500/5 group">
           <div class="w-14 h-14 bg-pink-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <span class="text-3xl">✨</span>
+            <Sparkles class="w-6 h-6 text-purple-900" />
           </div>
           <h3 class="text-purple-900 font-black uppercase tracking-tighter mb-3">Atención por Instagram</h3>
           <p class="text-gray-400 text-sm leading-relaxed text-balance">Contacto directo y personalizado por DM para resolver tus dudas antes de transferir</p>
@@ -69,7 +72,7 @@ export const prerender = true;
 
         <article class="flex flex-col items-center text-center p-10 bg-white rounded-[2.5rem] border border-purple-300 shadow-sm transition-all hover:shadow-xl hover:shadow-purple-500/5 group">
           <div class="w-14 h-14 bg-pink-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <span class="text-3xl">🇰🇷</span>
+            <MapPin class="w-6 h-6 text-purple-900" />
           </div>
           <h3 class="text-purple-900 font-black uppercase tracking-tighter mb-3 text-balance leading-none">Productos 100% Originales</h3>
           <p class="text-gray-400 text-sm leading-relaxed text-balance">Mercancía oficial importada directamente desde Corea para garantizar tu colección</p>

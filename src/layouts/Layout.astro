@@ -1,6 +1,7 @@
 ---
 import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
+import Pet from '../components/Pet.astro';
 
 const { title, albumTitle } = Astro.props;
 ---
@@ -31,6 +32,7 @@ const { title, albumTitle } = Astro.props;
 		</header>
 
 		<slot />
+		<Pet />
 	</body>
 </html>
 

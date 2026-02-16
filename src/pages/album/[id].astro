@@ -1,6 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getCollection, render } from "astro:content";
+import Truck from 'astro-heroicons/outline/Truck.astro';
+
 
 export async function getStaticPaths() {
   const albums = await getCollection("albums");
@@ -56,7 +58,7 @@ const { Content } = await render(album);
             CONSULTAR POR INSTAGRAM
           </a>
           <p class="text-[10px] text-gray-400 italic">
-             🚚 Realizamos envíos a todo Chile por Starken.
+             <Truck class="w-4 h-4 text-purple-900" /> Realizamos envíos a todo Chile por Starken.
           </p>
         </div>
 
