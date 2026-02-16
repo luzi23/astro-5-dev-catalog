@@ -1,7 +1,7 @@
 ---
 title: 'Seventeen - 17 right here'
 img: 17here.JPG
-price: '$45.000'
+price: '$42.000'
 ---
 
 - Photo book
